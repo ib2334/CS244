@@ -1,3 +1,4 @@
+<?php @session_start(); ?>
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="style.css">
 <html>
@@ -48,6 +49,25 @@
         <span class="error"><?php echo $passErr;?></span>
         <br><br>
         <input type="submit" name="submit" value="Login" > <br>
+        <div id="custom_captcha"></div>
         </form>
+        <?php
+            if(!isset($_REQUEST['g-recaptcha-response']) || empty($_POST['g-recaptcha-response']) )
+            {
+                $error = "Please fill the captcha.";
+            }
+            else
+            {
+                $cresponse = urlencode($_REQUEST['g-recaptcha-response']);
+                if($cresponse!=$_SESSION['custom_captcha'])
+                {
+                $error = "INVALID CAPTCHA";
+                }
+            }
+            if($errors=="")
+            {
+                //
+            }
+        ?>
     </body>
 </html>
