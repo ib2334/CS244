@@ -1,30 +1,22 @@
 <!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="style2.css">
+<meta charset="utf-8">
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <meta charset="utf-8">
-    </head>
     <body>
-        <style>
-        .lgin {
-            border: 3px outset red;
-            background-color: lightblue;
-            text-align: center;
-        }
-        </style>
-        <div class="lgin">
+        <div class="login">
+        <h1>Login</h1>
         Login as:
         <form method="POST" action="login.php">
-        <input type="submit" name="submit" value="Admin"> <br>
+        <input class="button" type="submit" name="submit" value="Admin"> <br>
         Login as:
         <form method="POST" action="login.php"> <br>
-        <input type="submit" name="submit" value="Student"> <br>
+        <input class="button" type="submit" name="submit" value="Student"> <br>
         Login as:
         <form method="POST" action="login.php"> <br>
-        <input type="submit" name="submit" value="Teacher"> <br>
+        <input class="button" type="submit" name="submit" value="Teacher"> <br>
         Login as:
         <form method="POST" action="login.php"> <br>
-        <input type="submit" name="submit" value="Principal"> <br>
+        <input class="button" type="submit" name="submit" value="Principal"> <br>
         </div>
     </body>
 </html>

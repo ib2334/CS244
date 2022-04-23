@@ -33,13 +33,13 @@
       }
     ?>
     <?php
-      include_once "index.php";
+      require_once "index.php";
       $id = $_POST["ID"];
       $pass = $_POST["pass"];
       $email = $_POST["email"];
       $log=new Login($id,$email,$pass);
-      $log->sess();
-      setcookie($id, "" , time() - 3600);
+      $log->sess(); 
     ?>
+    tgi is adasd test
   </body>
 </html>

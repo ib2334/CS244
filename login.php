@@ -1,8 +1,9 @@
 <?php @session_start(); ?>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="style1.css">
 <html>
     <body>
+        <div class="lgn">
         <h1>Login</h1>
         <?php
             $IDErr = $emailErr = $passErr = "";
@@ -38,6 +39,7 @@
             }
             
         ?>
+        
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         ID: <input type="text" name="ID" value="<?php echo $ID;?>">
         <span class="error">* <?php echo $IDErr;?></span>
@@ -49,10 +51,7 @@
         <span class="error"><?php echo $passErr;?></span>
         <br><br>
         <input type="submit" name="submit" value="Login" > <br>
-        <div id="custom_captcha"></div>
         </form>
-        <?php
-            
-        ?>
+        </div>
     </body>
 </html>
