@@ -1,73 +1,30 @@
-<?php @session_start(); ?>
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="style.css">
 <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="utf-8">
+    </head>
     <body>
-        <h1>Login</h1>
-        <?php
-            $IDErr = $emailErr = $passErr = "";
-            $ID = $email = $pass = "";
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if (empty($_POST["ID"])) {
-                    $IDErr = "ID is required";
-                } else {
-                    $ID = test_input($_POST["ID"]);
-                    if (!filter_var($ID, FILTER_VALIDATE_INT)) {
-                        $IDErr = "Only numbers allowed";
-                    }
-                }
-                if (empty($_POST["email"])) {
-                    $emailErr = "Email is required";
-                } else {
-                    $email = test_input($_POST["email"]);
-                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                        $emailErr = "Invalid email format";
-                    }
-                }
-                if (empty($_POST["pass"])) {
-                    $passErr = "Password is required";
-                } else {
-                    $pass = test_input($_POST["pass"]);
-                }
-            }
-            function test_input($data) {
-                $data = trim($data);
-                $data = stripslashes($data);
-                $data = htmlspecialchars($data);
-                return $data;
-            }
-            
-        ?>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        ID: <input type="text" name="ID" value="<?php echo $ID;?>">
-        <span class="error">* <?php echo $IDErr;?></span>
-        <br><br>
-        E-mail: <input type="text" name="email" value="<?php echo $email;?>">
-        <span class="error">* <?php echo $emailErr;?></span>
-        <br><br>
-        Password: <input type="password" name="pass" value="<?php echo $pass;?>">
-        <span class="error"><?php echo $passErr;?></span>
-        <br><br>
-        <input type="submit" name="submit" value="Login" > <br>
-        <div id="custom_captcha"></div>
-        </form>
-        <?php
-            if(!isset($_REQUEST['g-recaptcha-response']) || empty($_POST['g-recaptcha-response']) )
-            {
-                $error = "Please fill the captcha.";
-            }
-            else
-            {
-                $cresponse = urlencode($_REQUEST['g-recaptcha-response']);
-                if($cresponse!=$_SESSION['custom_captcha'])
-                {
-                $error = "INVALID CAPTCHA";
-                }
-            }
-            if($errors=="")
-            {
-                //
-            }
-        ?>
+        <style>
+        .lgin {
+            border: 3px outset red;
+            background-color: lightblue;
+            text-align: center;
+        }
+        </style>
+        <div class="lgin">
+        Login as:
+        <form method="POST" action="login.php">
+        <input type="submit" name="submit" value="Admin"> <br>
+        Login as:
+        <form method="POST" action="login.php"> <br>
+        <input type="submit" name="submit" value="Student"> <br>
+        Login as:
+        <form method="POST" action="login.php"> <br>
+        <input type="submit" name="submit" value="Teacher"> <br>
+        Login as:
+        <form method="POST" action="login.php"> <br>
+        <input type="submit" name="submit" value="Principal"> <br>
+        </div>
     </body>
 </html>
