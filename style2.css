@@ -1,13 +1,14 @@
 .login {
     background-color: lightblue;
-    border: 5px outset black;
+    border: 5px outset rgb(170, 9, 9);
     text-align: center;
     text-decoration: underline;
     text-decoration-color: black;
     text-decoration-thickness: 3px;
 }
 .button {
-    border: none;
+    border: 2px outset black;
+    border-radius: 25px;
     color: rgb(170, 9, 9);
     padding: 15px 32px;
     text-align: center;

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="style2.css">
-<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style2.css?v=1.1">
 <html>
     <body>
         <div class="login">
         <h1>Login</h1>
         Login as:
-        <form method="POST" action="validation.php">
+        <form method="POST" action="User.php">
         <input class="button" type="submit" name="submit" value="Admin"> <br>
         Login as:
         <form method="POST" action="validation.php"> <br>
