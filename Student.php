@@ -17,7 +17,7 @@
             $this->phone=$ph;
             $this->address=$ad;
             $this->busid=$bid;
-            $this->Email=$em;
+            $this->email=$em;
         }
         public function getID(){
             return $this->ID;
@@ -45,11 +45,10 @@
             return $this->busid;
         }
         public function getem(){
-            return $this->Email;
+            return $this->email;
         }
         public function __destruct()
         {
-            
         }
     }
 ?>
