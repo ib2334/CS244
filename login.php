@@ -1,4 +1,3 @@
-<?php //session_start(); ?>
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="style1.css">
 <html>
