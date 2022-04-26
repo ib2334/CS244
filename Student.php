@@ -1,5 +1,5 @@
 <?php
-    class Student{
+    class Student extends User{
         private $ID;
         private $pass;
         private $fname;
@@ -49,6 +49,13 @@
         }
         public function __destruct()
         {
+        }
+        public function ShowProfile(){
+            $this->getpass();
+            $this->getadd();
+            $this->getph();
+            $this->getbid();
+            $this->getem();
         }
     }
 ?>
