@@ -33,13 +33,17 @@
       }
     ?>
     <?php
-      require_once "index.php";
+      /*
+      require_once "login.php";
       $id = $_POST["ID"];
       $pass = $_POST["pass"];
       $email = $_POST["email"];
       $log=new Login($id,$email,$pass);
-      $log->sess(); 
+      $log->sess();
+      */
+      $myfile=fopen("Student.txt", "a+");
+      echo fread($myfile,filesize("Student.txt"));
+      fclose($myfile);
     ?>
-    tgi is adasd test
   </body>
 </html>

@@ -6,16 +6,16 @@
         <div class="login">
         <h1>Login</h1>
         Login as:
-        <form method="POST" action="login.php">
+        <form method="POST" action="validation.php">
         <input class="button" type="submit" name="submit" value="Admin"> <br>
         Login as:
-        <form method="POST" action="login.php"> <br>
+        <form method="POST" action="validation.php"> <br>
         <input class="button" type="submit" name="submit" value="Student"> <br>
         Login as:
-        <form method="POST" action="login.php"> <br>
+        <form method="POST" action="validation.php"> <br>
         <input class="button" type="submit" name="submit" value="Teacher"> <br>
         Login as:
-        <form method="POST" action="login.php"> <br>
+        <form method="POST" action="validation.php"> <br>
         <input class="button" type="submit" name="submit" value="Principal"> <br>
         </div>
     </body>

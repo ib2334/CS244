@@ -47,5 +47,9 @@
         public function getem(){
             return $this->Email;
         }
+        public function __destruct()
+        {
+            
+        }
     }
 ?>
