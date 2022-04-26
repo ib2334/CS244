@@ -5,7 +5,7 @@
         <div class="login">
         <h1>Login</h1>
         Login as:
-        <form method="POST" action="User.php">
+        <form method="POST" action="login.php">
         <input class="button" type="submit" name="submit" value="Admin"> <br>
         Login as:
         <form method="POST" action="validation.php"> <br>

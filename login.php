@@ -47,6 +47,9 @@
                 return $data;
             }
         ?>
+        <?php
+            if()
+        ?>
         <div class="lgn">
         <h1>Login</h1>
         <form method="post" action="<?php if($red==true){
@@ -65,6 +68,13 @@
         Password: <input type="password" name="pass" value="<?php echo $Pass;?>">
         <span class="error"><?php echo $Passerr;?></span>
         <br><br>
+        <label for="login">Type:</label>
+        <select name="login" id="login">
+        <option value="Admin">Admin</option>
+        <option value="Student">Student</option>
+        <option value="Teacher">Teacher</option>
+        <option value="Principal">Principal</option>
+        </select> <br><br>
         <input type="submit" name="submit" value="Login" > <br>
         </form>
         </div>
