@@ -1,2 +1,2 @@
-01~Ali
-02~Omar
+01|Ali
+02|Omar

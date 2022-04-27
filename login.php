@@ -47,9 +47,16 @@
                 return $data;
             }
             function checkuser($file){
-                while(!feof($file)){
-                    
+                $filetype=fopen($file,'a+') or die ('File Inaccesible');
+                $seperator="|";
+                while(!feof($filetype)){
+                    $line=fgets($filetype);
+                    $Arrline=explode($seperator,$line);
+                    if($Arrline[0]==$_POST['ID']){
+                        return true;
+                    }
                 }
+                fclose($filetype);
             }
         ?>
         <?php
@@ -57,6 +64,7 @@
             $utype=0;
             if($intype=="Admin"){
                 $utype=1;
+                echo checkuser("Admin.txt");
             }
             elseif($intype=="Student"){
                 $utype=2;
