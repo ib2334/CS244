@@ -1,35 +1,30 @@
 <?php
-    class Principal{
-        private $id;
-        private $fname;
-        private $lname;
-        private $email;
-        public function __construct($id, $f,$l,$em)
-        {
-            $this->ID=$id;
-            $this->fname=$f;
-            $this->lname=$l;
-            $this->email=$em;
+    session_start();
+    require_once "User.php";
+    require "UserInfo.php";
+    class Principal extends UserInfo implements User{
+        public function ShowProfile(){
+            echo $this->getID();
+            echo "<hr>";
+            echo $this->getfName();
+            echo "<hr>";
+            echo $this->getlName();
+            echo "<hr>";
+            echo $this->getem();
+            echo "<hr>";
         }
-        public function getid(){
-            return $this->id;
-        }
-        public function Fees(){
-            return $this->Fees;
-        }
-        public function getfname(){
-            return $this->fnamed;
-        }
-        public function getlname(){
-            return $this->lname; 
-        }
-        public function getemail(){
-            return $this->email;
-        }
-        function __destruct(){
-        
     }
-
+    $id_value = $_SESSION['ID'];
+    $filename="Principal.txt";
+    $file=fopen($filename, 'a+') or die ('File Inaccesible');
+    $seperator="|";
+    while(!feof($file)){
+        $line=fgets($file);
+        $Arrline=explode($seperator,$line);
+        if($Arrline[0]==$id_value){
+            $pr=new Principal($Arrline[0],$Arrline[1],$Arrline[2],$Arrline[3],$Arrline[4]);
+        }
     }
+    fclose($file);
+    $pr->ShowProfile();
 ?>
-Principal
