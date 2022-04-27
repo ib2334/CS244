@@ -47,14 +47,20 @@
                 return $data;
             }
             function checkuser($file){
+                $IDcheck=$_POST['ID'];
+                $IDerr="Invalid ID";
                 $filetype=fopen($file,'a+') or die ('File Inaccesible');
                 $seperator="|";
                 while(!feof($filetype)){
                     $line=fgets($filetype);
                     $Arrline=explode($seperator,$line);
-                    if($Arrline[0]==$_POST['ID']){
-                        return true;
+                    if($Arrline[0]==$IDcheck){
+                        return $IDcheck;
+                        fclose($filetype);
                     }
+                }
+                if($IDcheck!=""){
+                    return $IDerr;
                 }
                 fclose($filetype);
             }
@@ -62,25 +68,57 @@
         <?php
             $intype=filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
             $utype=0;
+            $uval="";
             if($intype=="Admin"){
-                $utype=1;
-                echo checkuser("Admin.txt");
+                if(checkuser("Admin.txt") == "Invalid ID"){
+                    $IDerr=checkuser("Admin.txt");
+                }
+                else{
+                    $utype=checkuser("Admin.txt");
+                    $uval="a";
+                }
             }
             elseif($intype=="Student"){
-                $utype=2;
+                if(checkuser("Student.txt") == "Invalid ID"){
+                    $IDerr=checkuser("Student.txt");
+                }
+                else{
+                    $utype=checkuser("Student.txt");
+                    $uval="s";
+                }
             }
             elseif($intype=="Teacher"){
-                $utype=3;
+                if(checkuser("Teacher.txt") == "Invalid ID"){
+                    $IDerr=checkuser("Teacher.txt");
+                }
+                else{
+                    $utype=checkuser("Teacher.txt");
+                    $uval="t";
+                }
             }
             elseif($intype=="Principal"){
-                $utype=4;
+                if(checkuser("Principal.txt") == "Invalid ID"){
+                    $IDerr=checkuser("Prinicipal.txt");
+                }
+                else{
+                    $utype=checkuser("Principal.txt");
+                    $uval="p";
+                }
             }
         ?>
         <div class="lgn">
         <h1>Login</h1>
-        <form method="post" action="<?php if($red==true){
-            echo htmlspecialchars($_SERVER["PHP_SELF"]);
-            //header("Location: http://localhost/CS244/index.php");
+        <form method="post" action="<?php if($red==true && $uval=="a"){
+            header("Location: http://localhost/CS244/Admin.php");
+        }
+        elseif($red==true && $uval=="s"){
+            header("Location: http://localhost/CS244/Student.php");
+        }
+        elseif($red==true && $uval=="t"){
+            header("Location: http://localhost/CS244/Teacher.php");
+        }
+        elseif($red==true && $uval=="p"){
+            header("Location: http://localhost/CS244/Principal.php");
         }
         elseif ($red==false){
             echo htmlspecialchars($_SERVER["PHP_SELF"]);
@@ -89,7 +127,7 @@
         <span class="error">* <?php echo $IDerr;?></span>
         <br><br>
         E-mail: <input type="text" name="email" value="<?php echo $Email;?>">
-        <span class="error">* <?php echo$Emailerr;?></span>
+        <span class="error">* <?php echo $Emailerr;?></span>
         <br><br>
         Password: <input type="password" name="pass" value="<?php echo $Pass;?>">
         <span class="error"><?php echo $Passerr;?></span>
