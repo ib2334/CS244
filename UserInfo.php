@@ -5,7 +5,7 @@ class UserInfo{
     private $fname;
     private $lname;
     private $email;
-    public function __construct($ID, $pass, $fn, $ln, $em)
+    public function __construct($ID, $fn, $ln, $em, $pass)
     {
         $this->ID=$ID;
         $this->pass=$pass;
