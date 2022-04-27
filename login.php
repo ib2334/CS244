@@ -113,6 +113,7 @@
         <h1>Login</h1>
         <form method="post" action="<?php if($red==true && $uval=="a"){
             header("Location: http://localhost/CS244/Admin.php");
+            $_SESSION['ID'] = $utype;
         }
         elseif($red==true && $uval=="s"){
             header("Location: http://localhost/CS244/Student.php");
@@ -120,9 +121,11 @@
         }
         elseif($red==true && $uval=="t"){
             header("Location: http://localhost/CS244/Teacher.php");
+            $_SESSION['ID'] = $utype;
         }
         elseif($red==true && $uval=="p"){
             header("Location: http://localhost/CS244/Principal.php");
+            $_SESSION['ID'] = $utype;
         }
         elseif ($red==false){
             echo htmlspecialchars($_SERVER["PHP_SELF"]);
