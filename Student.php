@@ -27,19 +27,19 @@
         }
         public function ShowProfile(){
             echo $this->getID();
-            echo "<br>";
+            echo "<hr>";
             echo $this->getfName();
-            echo "<br>";
+            echo "<hr>";
             echo $this->getlName();
-            echo "<br>";
+            echo "<hr>";
             echo $this->getem();
-            echo "<br>";
+            echo "<hr>";
             echo $this->getph();
-            echo "<br>";
+            echo "<hr>";
             echo $this->getadd();
-            echo "<br>";
+            echo "<hr>";
             echo $this->getbid();
-            echo "<br>";
+            echo "<hr>";
         }
     }
     $id_value = $_SESSION['ID'];
