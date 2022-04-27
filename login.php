@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="style1.css">
 <html>
@@ -48,19 +49,21 @@
             }
             function checkuser($file){
                 $IDcheck=$_POST['ID'];
-                $IDerr="Invalid ID";
+                $Emailcheck=$_POST['email'];
+                $Passcheck=$_POST['pass'];
+                $Err="Paramaters invalid";
                 $filetype=fopen($file,'a+') or die ('File Inaccesible');
                 $seperator="|";
                 while(!feof($filetype)){
                     $line=fgets($filetype);
                     $Arrline=explode($seperator,$line);
-                    if($Arrline[0]==$IDcheck){
+                    if($Arrline[0]==$IDcheck && $Arrline[3]==$Emailcheck && $Arrline[4]==$Passcheck){
                         return $IDcheck;
                         fclose($filetype);
                     }
                 }
-                if($IDcheck!=""){
-                    return $IDerr;
+                if($IDcheck!="" || $Emailcheck!="" || $Passcheck!=""){
+                    return $Err;
                 }
                 fclose($filetype);
             }
@@ -70,7 +73,7 @@
             $utype=0;
             $uval="";
             if($intype=="Admin"){
-                if(checkuser("Admin.txt") == "Invalid ID"){
+                if(checkuser("Admin.txt") == "Paramaters invalid"){
                     $IDerr=checkuser("Admin.txt");
                 }
                 else{
@@ -79,7 +82,7 @@
                 }
             }
             elseif($intype=="Student"){
-                if(checkuser("Student.txt") == "Invalid ID"){
+                if(checkuser("Student.txt") == "Paramaters invalid"){
                     $IDerr=checkuser("Student.txt");
                 }
                 else{
@@ -88,7 +91,7 @@
                 }
             }
             elseif($intype=="Teacher"){
-                if(checkuser("Teacher.txt") == "Invalid ID"){
+                if(checkuser("Teacher.txt") == "Paramaters invalid"){
                     $IDerr=checkuser("Teacher.txt");
                 }
                 else{
@@ -97,7 +100,7 @@
                 }
             }
             elseif($intype=="Principal"){
-                if(checkuser("Principal.txt") == "Invalid ID"){
+                if(checkuser("Principal.txt") == "Paramaters invalid"){
                     $IDerr=checkuser("Prinicipal.txt");
                 }
                 else{
@@ -113,6 +116,7 @@
         }
         elseif($red==true && $uval=="s"){
             header("Location: http://localhost/CS244/Student.php");
+            $_SESSION['ID'] = $utype;
         }
         elseif($red==true && $uval=="t"){
             header("Location: http://localhost/CS244/Teacher.php");
