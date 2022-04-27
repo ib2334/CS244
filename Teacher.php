@@ -1,43 +1,18 @@
 	<?php
-	class teacher
-	
-
 	session_start();
 	require_once"user.php";
 	require "userInfo.php";
-	class teacher extends userInfo implements user
+	class Teacher extends UserInfo implements User
 	{
-	    private $id;
-	    private $teacherfName;
-	    private $teacherlName;
 	    private $phone;
 	    private $address;
-	    private $email;
-	    private $password;
 	
-	    public function _construct($id, $fname, $lname, $em, $pass, $add, $ph)
+	    public function _construct($add, $ph)
 	    {
-	        $this->id=$id;
-	        $this->teacherfName=$fname;
-	        $this->teacherlName=$lname;
 	        $this->phone=$ph;
 	        $this->address=$add;
-	        $this->email=$em;
-	        $this->password=$pass;
-	    }
-	    public function getid()
-	    {
-	        return $this->id;
 	    }
         
-        public function getfname()
-        {
-          return $this->teacherfname;
-        }
-        public function getlname()
-        {
-         return $this->teacherlname; 
-        }
         public function getph()
         {
         return $this->phone;
@@ -46,20 +21,12 @@
         {
         return $this->address;
         }
-        public function getem()
-        {
-        return $this->email;
-        }
-        public function getpass()
-        {
-        return $this->password;
-         }
     function __destruct()
     {
         
     }
 
-	    public function showprofile()
+	    public function ShowProfile()
 	    {
 	        echo $this->getid();
 	        echo"<hr>";
@@ -73,13 +40,11 @@
 	        echo"<hr>";
 	        echo $this->getem();
 	        echo"<hr>";
-	        echo $this->getpass();
-	        echo"<hr>";
 	    }
 	}
-	$id_value= $session['id'];
-	$filename= "teacher.txt";
-	$file=fopen($filename, 'a+') or die('file inaccesible');
+	$id_value= $session['ID'];
+	$filename= "Teacher.txt";
+	$file=fopen($filename, 'a+') or die('File Inaccesible');
 	$seperator="|";
 	while(!feof ($file))
 	{
@@ -88,9 +53,9 @@
 	        $Arrline=explode($seperator, $line);
 	        if($Arrline[0]==$id_value)
 	        {
-	            $tch=new teacher ($Arrline[0],$Arrline[1],$Arrline[2],$Arrline[3],$Arrline[4],$Arrline[5],$Arrline[6];
+	            $tch=new Teacher ($Arrline[0],$Arrline[1],$Arrline[2],$Arrline[3],$Arrline[4],$Arrline[5],$Arrline[6];
 	        }
 	    }
 	    fclose($file);
-	    $tch->showfile();
+	    $tch->ShowProfile();
 	?>
