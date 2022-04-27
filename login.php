@@ -46,9 +46,27 @@
                 $data = htmlspecialchars($data);
                 return $data;
             }
+            function checkuser($file){
+                while(!feof($file)){
+                    
+                }
+            }
         ?>
         <?php
-            if()
+            $intype=filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
+            $utype=0;
+            if($intype=="Admin"){
+                $utype=1;
+            }
+            elseif($intype=="Student"){
+                $utype=2;
+            }
+            elseif($intype=="Teacher"){
+                $utype=3;
+            }
+            elseif($intype=="Principal"){
+                $utype=4;
+            }
         ?>
         <div class="lgn">
         <h1>Login</h1>
