@@ -73,38 +73,38 @@
             $utype=0;
             $uval="";
             if($intype=="Admin"){
-                if(checkuser("Admin.txt") == "Paramaters invalid"){
-                    $IDerr=checkuser("Admin.txt");
+                if(checkuser('../Invoices/Admin.txt') == "Paramaters invalid"){
+                    $IDerr=checkuser('../Invoices/Admin.txt');
                 }
                 else{
-                    $utype=checkuser("Admin.txt");
+                    $utype=checkuser('../Invoices/Admin.txt');
                     $uval="a";
                 }
             }
             elseif($intype=="Student"){
-                if(checkuser("Student.txt") == "Paramaters invalid"){
-                    $IDerr=checkuser("Student.txt");
+                if(checkuser('../Invoices/Student.txt') == "Paramaters invalid"){
+                    $IDerr=checkuser('../Invoices/Student.txt');
                 }
                 else{
-                    $utype=checkuser("Student.txt");
+                    $utype=checkuser('../Invoices/Student.txt');
                     $uval="s";
                 }
             }
             elseif($intype=="Teacher"){
-                if(checkuser("Teacher.txt") == "Paramaters invalid"){
-                    $IDerr=checkuser("Teacher.txt");
+                if(checkuser('../Invoices/Teacher.txt') == "Paramaters invalid"){
+                    $IDerr=checkuser('../Invoices/Teacher.txt');
                 }
                 else{
-                    $utype=checkuser("Teacher.txt");
+                    $utype=checkuser('../Invoices/Teacher.txt');
                     $uval="t";
                 }
             }
             elseif($intype=="Principal"){
-                if(checkuser("Principal.txt") == "Paramaters invalid"){
-                    $IDerr=checkuser("Prinicipal.txt");
+                if(checkuser('../Invoices/Principal.txt') == "Paramaters invalid"){
+                    $IDerr=checkuser('../Invoices/Principal.txt');
                 }
                 else{
-                    $utype=checkuser("Principal.txt");
+                    $utype=checkuser('../Invoices/Principal.txt');
                     $uval="p";
                 }
             }
@@ -112,19 +112,19 @@
         <div class="lgn">
         <h1>Login</h1>
         <form method="post" action="<?php if($red==true && $uval=="a"){
-            header("Location: http://localhost/CS244/Admin.php");
+            header("Location: http://localhost/CS244/Backend/Admin.php");
             $_SESSION['ID'] = $utype;
         }
         elseif($red==true && $uval=="s"){
-            header("Location: http://localhost/CS244/Student.php");
+            header("Location: http://localhost/CS244/Backend/Student.php");
             $_SESSION['ID'] = $utype;
         }
         elseif($red==true && $uval=="t"){
-            header("Location: http://localhost/CS244/Teacher.php");
+            header("Location: http://localhost/CS244/Backend/Teacher.php");
             $_SESSION['ID'] = $utype;
         }
         elseif($red==true && $uval=="p"){
-            header("Location: http://localhost/CS244/Principal.php");
+            header("Location: http://localhost/CS244/Backend/Principal.php");
             $_SESSION['ID'] = $utype;
         }
         elseif ($red==false){

@@ -43,7 +43,7 @@
         }
     }
     $id_value = $_SESSION['ID'];
-    $filename="Student.txt";
+    $filename='../Invoices/Student.txt';
     $file=fopen($filename, 'a+') or die ('File Inaccesible');
     $seperator="|";
     while(!feof($file)){
