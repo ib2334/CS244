@@ -99,12 +99,12 @@
                     $uval="t";
                 }
             }
-            elseif($intype=="Principal"){
-                if(checkuser('../Invoices/Principal.txt') == "Paramaters invalid"){
-                    $IDerr=checkuser('../Invoices/Principal.txt');
+            elseif($intype=="Accountant"){
+                if(checkuser('../Invoices/Accountant.txt') == "Paramaters invalid"){
+                    $IDerr=checkuser('../Invoices/Accountant.txt');
                 }
                 else{
-                    $utype=checkuser('../Invoices/Principal.txt');
+                    $utype=checkuser('../Invoices/Accountant.txt');
                     $uval="p";
                 }
             }
@@ -124,7 +124,7 @@
             $_SESSION['ID'] = $utype;
         }
         elseif($red==true && $uval=="p"){
-            header("Location: http://localhost/CS244/Backend/Principal.php");
+            header("Location: http://localhost/CS244/Backend/Accountant.php");
             $_SESSION['ID'] = $utype;
         }
         elseif ($red==false){
@@ -144,7 +144,7 @@
         <option value="Admin">Admin</option>
         <option value="Student">Student</option>
         <option value="Teacher">Teacher</option>
-        <option value="Principal">Principal</option>
+        <option value="Accountant">Accountant</option>
         </select> <br><br>
         <input type="submit" name="submit" value="Login" > <br>
         </form>
