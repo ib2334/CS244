@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="Frontend/style2.css?v=1.1">
+<link rel="stylesheet" type="text/css" href="Frontend/style2.css">
 <html>
+    <div id="nav-placeholder"></div>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script>
+    $.get("Frontend/nav.html", function(data){
+        $("#nav-placeholder").replaceWith(data);
+    });
+    </script>
     <body>
         <div class="login">
         <h1>Login</h1>

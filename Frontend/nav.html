@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="style2.css">
+<html>
+        <nav>
+            <div class="topnav">
+                <a class="active" href="#home">Home</a>
+                <a href="#news">News</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+                <a href="Frontend/login.php" id="lgin">Login</a>
+                <div class="search-container">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Search.." name="search" class="sbox"></input>
+                        <button type="submit"><img src="https://img.icons8.com/ios/344/search.png" class="icon" </img><i></i></button> 
+                    </form>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+            </div>
+            <script>
+                $(function(){
+                  $("#nav-placeholder").load("nav.html");
+                });
+            </script>
+        </nav>
+</html>
