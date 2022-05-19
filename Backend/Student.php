@@ -2,6 +2,7 @@
     session_start();
     require_once "User.php";
     require "UserInfo.php";
+    require "Courses.php";
     class Student extends UserInfo implements User{ 
         private $phone;
         private $address;
