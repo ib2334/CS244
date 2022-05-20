@@ -11,6 +11,14 @@
     $.get("nav.html", function(data){
         $("#nav-placeholder").replaceWith(data);
     });
+    function myFunction() {
+        var x = document.getElementById("inp");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+        }
     </script>
     <body>
         <?php
@@ -151,9 +159,10 @@
                 E-mail: <input type="text" name="email" value="<?php echo $Email;?>">
                 <span class="error">* <?php echo $Emailerr;?></span>
                 <br><br>
-                Password: <input type="password" name="pass" value="<?php echo $Pass;?>">
+                Password: <input id="inp" type="password" name="pass" value="<?php echo $Pass;?>">
                 <span class="error"><?php echo $Passerr;?></span>
                 <br><br>
+                <input type="checkbox" onclick="myFunction()">Show Password<br><br>
                 <label for="login">Type:</label>
                 <select name="login" id="login">
                     <option value="Admin">Admin</option>
@@ -161,8 +170,8 @@
                     <option value="Teacher">Teacher</option>
                     <option value="Accountant">Accountant</option>
                 </select> <br><br>
-                <input type="submit" name="submit" value="Login" class="lnbutton"><br></br>
-                <a class="fp" href="http://localhost/CS244/Frontend/NewPass.html">Forgot Password?<br></br>
+                <input type="submit" name="submit" value="Login" class="lnbutton"><br><br>
+                <a class="fp" href="http://localhost/CS244/Frontend/EmNewPass.html">Forgot Password?<br><br>
                 </form>
             </div>
         </div>
