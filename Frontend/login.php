@@ -41,7 +41,6 @@
                     $Email=test_input($_POST['email']);
                     if (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
                         $Emailerr = "Invalid email format";
-        
                     }
                 }
 
@@ -72,13 +71,28 @@
                 $Err=0;
                 $filetype=fopen($file,'a+') or die ('File Inaccesible');
                 $seperator="|";
-                $i=0;
                 while(!feof($filetype)){
                     $line=fgets($filetype);
                     $Arrline=explode($seperator,$line);
                     if($Arrline[0]==$IDcheck){
                         fclose($filetype);
                         return $IDcheck;
+                    }
+                }
+                while(!feof($filetype)){
+                    $line=fgets($filetype);
+                    $Arrline=explode($seperator,$line);
+                    if($Arrline[3]==$Emailcheck){
+                        fclose($filetype);
+                        return $Emailcheck;
+                    }
+                }
+                while(!feof($filetype)){
+                    $line=fgets($filetype);
+                    $Arrline=explode($seperator,$line);
+                    if($Arrline[4]==$Passcheck){
+                        fclose($filetype);
+                        return $Passcheck;
                     }
                 }
                 $Err=1;
@@ -91,17 +105,16 @@
             $utype=0;
             $uval="";
             if($intype=="Admin"){
-                if(checkuser('../Invoices/Admin.txt') == 1){
+                if(checkuser('../Invoices/Admin.txt') == 1 && $_POST['ID'] != ""){
                     $IDerr="Paramaters Invalid";
                 }
                 else{
-                    echo "Good";
                     $utype=checkuser('../Invoices/Admin.txt');
                     $uval="a";
                 }
             }
             elseif($intype=="Student"){
-                if(checkuser('../Invoices/Student.txt') == 1){
+                if(checkuser('../Invoices/Student.txt') == 1 && $_POST['ID'] != ""){
                     $IDerr="Paramaters Invalid";
                 }
                 else{
@@ -110,16 +123,16 @@
                 }
             }
             elseif($intype=="Teacher"){
-                if(checkuser('../Invoices/Teacher.txt') == 1){
+                if(checkuser('../Invoices/Teacher.txt') == 1 && $_POST['ID'] != ""){
                     $IDerr="Paramaters Invalid";
                 }
                 else{
-                    $utype=checkuser('../Invoices/Teacher.txt');
+                    $utype=checkuser('../Invoices/Teacher.txt' && $_POST['ID'] != "");
                     $uval="t";
                 }
             }
             elseif($intype=="Accountant"){
-                if(checkuser('../Invoices/Accountant.txt') == 1){
+                if(checkuser('../Invoices/Accountant.txt') == 1 && $_POST['ID'] != ""){
                     $IDerr="Paramaters Invalid";
                 }
                 else{

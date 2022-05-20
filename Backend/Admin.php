@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="../Frontend/nav.css">
+<html>
+    <div id="nav-placeholder"></div>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script>
+    $.get("../Frontend/nav.html", function(data){
+        $("#nav-placeholder").replaceWith(data);
+    });
+    </script>
+</html>
 <?php
     session_start();
     require_once "User.php";
