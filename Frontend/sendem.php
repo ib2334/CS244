@@ -8,9 +8,10 @@
     $mail=new PHPMailer(true);
     $mail->isSMTP();
     $mail->SMTPAuth = true;
-    $mail->SMTPSecure = "ssl";
     $mail->Host = "smtp.gmail.com";
-    $mail->Port = '587';
+    $mail->Port = '465';
+    $mail->SMTPDebug=1;
+    $mail->SMTPSecure='ssl';
     $mail->SMTPOptions = array(
         'ssl' => array(
             'verify_peer' => false,
@@ -25,13 +26,14 @@
     $mail->addAddress($email);
     $mail->isHTML(true);
     $mail->Subject = "Subject Text";
-    $mail->Body = "<H3>Bienvenido! Esto Funciona!</H3>";
+    $mail->Body = "<H3>Hi</H3>";
     try {
         $mail->send();
         echo "Message has been sent successfully";
     } catch (Exception $e) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }
+    session_reset();
 ?>
 <br>
 csasc

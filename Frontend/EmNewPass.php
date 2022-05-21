@@ -30,17 +30,20 @@
         while(!feof($filetype)){
             $line=fgets($filetype);
             $Arrline=explode($seperator,$line);
+            echo $Arrline[3]."<br>";
             if($Arrline[3]==$sendEM){
                 $val=true;
                 fclose($filetype);
                 break;
             }
         }
+       
     ?>
     <body>
         <hr id="navsep"></hr>
         <div class="lgn">
             <form method="post" action="<?php if($val==true){
+                echo "yes";
                 header("Location: http://localhost/CS244/Frontend/sendem.php");
                 $_SESSION['email'] = $sendEM;
             }
