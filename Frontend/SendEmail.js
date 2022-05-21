@@ -11,7 +11,7 @@ var transporter = nodemailer.createTransport({
 var mailOptions = {
   from: 'ziad.shaker0@gmail.com',
   to: 'ziadfehr0@gmail.com',
-  subject: 'ignore',
+  subject: 'test3',
   text: `test`
 };
 

@@ -184,7 +184,7 @@
                     <option value="Accountant">Accountant</option>
                 </select> <br><br>
                 <input type="submit" name="submit" value="Login" class="lnbutton"><br><br>
-                <a class="fp" href="http://localhost/CS244/Frontend/EmNewPass.html">Forgot Password?<br><br>
+                <a class="fp" href="http://localhost/CS244/Frontend/EmNewPass.php">Forgot Password?<br><br>
                 </form>
             </div>
         </div>
