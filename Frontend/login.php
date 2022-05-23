@@ -5,12 +5,14 @@
     <head> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
+    <!--This script calls sitemasters-->
     <div id="nav-placeholder"></div>
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script>
     $.get("nav.html", function(data){
         $("#nav-placeholder").replaceWith(data);
     });
+    //This function shows/hides passwords
     function myFunction() {
         var x = document.getElementById("inp");
         if (x.type === "password") {
@@ -22,6 +24,7 @@
     </script>
     <body>
         <?php
+            //This calls a functions to validate inputs from user
             $red=true;
             $ID=$Email=$Pass="";
             $IDerr=$Emailerr=$Passerr="";
@@ -57,13 +60,14 @@
                     $red=false;
                 }
             }
-            
+            //Validation Function
             function test_input($data) {
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
                 return $data;
             }
+            //Searches for inputted id, email and password in the associated text files, then returns true if found
             function checkuser($file){
                 $IDcheck=$_POST['ID'];
                 $Emailcheck=$_POST['email'];
@@ -101,6 +105,7 @@
             }
         ?>
         <?php
+            //Calls the search function with the text file depending on the user type
             $intype=filter_input(INPUT_POST, 'login', FILTER_UNSAFE_RAW);
             $utype=0;
             $uval="";
@@ -146,6 +151,7 @@
             <h1 id="ln">Login</h1>
             <hr class="lnsep"></hr>
             <p class="info">Please Enter Your Information</p>
+            <!--This chekcs the user type and redirects to their page after all validation is complete-->
             <form method="post" action="<?php if($red==true && $uval=="a"){
                 header("Location: http://localhost/CS244/Backend/Admin.php");
                 $_SESSION['ID'] = $utype;
@@ -175,7 +181,7 @@
                 Password: <input id="inp" type="password" name="pass" value="<?php echo $Pass;?>">
                 <span class="error"><?php echo $Passerr;?></span>
                 <br><br>
-                <input type="checkbox" onclick="myFunction()">Show Password<br><br>
+                <input type="checkbox" onclick="myFunction()">Show Password<br><br> <!--Calls JS function to show and hide password-->
                 <label for="login">Type:</label>
                 <select name="login" id="login">
                     <option value="Admin">Admin</option>
