@@ -2,12 +2,28 @@
 	session_start();
 	require_once "User.php";
 	require "UserInfo.php";
-	class Teacher extends UserInfo implements User
+	require "Courses.php";
+    require "CourseInterface.php";
+	class Teacher extends UserInfo implements User , CourseInterface
 	{
 	    private $phone;
 	    private $address;
-	
-	    public function _construct($add, $ph)
+	    use Courses{
+		__construct as crs; 
+	}
+	public function setcrs($id,$name)
+	{
+		$this->crs($id,$name);
+
+	}
+	public function ShowCRS()
+	{
+		echo $this->getCID();
+		echo"<hr>";
+		echo $this->getCN();
+		echo "<hr>";
+	}
+	    public function __construct($add, $ph)
 	    {
 	        $this->phone=$ph;
 	        $this->address=$add;
@@ -42,6 +58,20 @@
 	        echo"<hr>";
 	    }
 	}
+	function readCID($CID){
+        $filename='../Invoices/Courses.txt';
+        $file=fopen($filename, 'a+') or die ('File Inaccesible');
+        $seperator="|";
+        while(!feof($file)){
+            $line=fgets($file);
+            $Arrline=explode($seperator,$line);
+            if($Arrline[0]==$CID){
+                return $Arrline[1];
+                fclose($file);
+            }
+        }
+        fclose($file);
+    }
 	$id_value= $_SESSION['ID'];
 	$filename= '../Invoices/Teacher.txt';
 	$file=fopen($filename, 'a+') or die('File Inaccesible');
@@ -56,5 +86,21 @@
 	    }
     }
     fclose($file);
+	echo "profile:<br><br>";
 	$tch->ShowProfile();
+	echo"<br><br>";
+	echo "course:<br><br>";
+	$filename='../Invoices/TchToCrsRelation.txt';
+    $file=fopen($filename, 'a+') or die ('File Inaccesible');
+    $seperator="|";
+    while(!feof($file)){
+        $line=fgets($file);
+        $Arrline=explode($seperator,$line);
+        if($tch->getID()==$Arrline[0]){
+            $CID=$Arrline[1];
+            $tch->SetCRS($Arrline[1],readCID($CID[1]));
+            $tch->ShowCRS();
+        }
+    }
+	fclose($file);
 ?>
