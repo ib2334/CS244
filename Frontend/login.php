@@ -1,17 +1,11 @@
-<?php session_start(); ?>
+<?php session_start(); include "TopNav.html"; ?>
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="lgin.css">
 <html>
     <head> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <!--This script calls sitemasters-->
-    <div id="nav-placeholder"></div>
-    <script src="//code.jquery.com/jquery.min.js"></script>
     <script>
-    $.get("nav.html", function(data){
-        $("#nav-placeholder").replaceWith(data);
-    });
     //This function shows/hides passwords
     function myFunction() {
         var x = document.getElementById("inp");
@@ -72,34 +66,46 @@
                 $IDcheck=$_POST['ID'];
                 $Emailcheck=$_POST['email'];
                 $Passcheck=$_POST['pass'];
-                $Err=0;
+                $ct=0;
+                $Err=2;
                 $filetype=fopen($file,'a+') or die ('File Inaccesible');
                 $seperator="|";
                 while(!feof($filetype)){
                     $line=fgets($filetype);
                     $Arrline=explode($seperator,$line);
                     if($Arrline[0]==$IDcheck){
+                        ++$ct;
                         fclose($filetype);
-                        return $IDcheck;
+                        break;
                     }
                 }
+                $filetype=fopen($file,'a+') or die ('File Inaccesible');
+                $seperator="|";
                 while(!feof($filetype)){
                     $line=fgets($filetype);
                     $Arrline=explode($seperator,$line);
                     if($Arrline[3]==$Emailcheck){
+                        ++$ct;
+                       
                         fclose($filetype);
-                        return $Emailcheck;
+                        break;
                     }
                 }
+                $filetype=fopen($file,'a+') or die ('File Inaccesible');
+                $seperator="|";
                 while(!feof($filetype)){
                     $line=fgets($filetype);
                     $Arrline=explode($seperator,$line);
                     if($Arrline[4]==$Passcheck){
+                        ++$ct;
                         fclose($filetype);
-                        return $Passcheck;
+                        break;
                     }
                 }
-                $Err=1;
+                if($ct==3){
+                    return $IDcheck;
+                }
+                $Err=3;
                 return $Err;
                 fclose($filetype);
             }
@@ -110,7 +116,7 @@
             $utype=0;
             $uval="";
             if($intype=="Admin"){
-                if(checkuser('../Invoices/Admin.txt') == 1 && $_POST['ID'] != ""){
+                if(checkuser('../Invoices/Admin.txt') == 3 && $_POST['ID'] != ""){
                     $IDerr="Paramaters Invalid";
                 }
                 else{
@@ -119,7 +125,7 @@
                 }
             }
             elseif($intype=="Student"){
-                if(checkuser('../Invoices/Student.txt') == 1 && $_POST['ID'] != ""){
+                if(checkuser('../Invoices/Student.txt') == 3 && $_POST['ID'] != ""){
                     $IDerr="Paramaters Invalid";
                 }
                 else{
@@ -128,16 +134,16 @@
                 }
             }
             elseif($intype=="Teacher"){
-                if(checkuser('../Invoices/Teacher.txt') == 1 && $_POST['ID'] != ""){
+                if(checkuser('../Invoices/Teacher.txt') == 3 && $_POST['ID'] != ""){
                     $IDerr="Paramaters Invalid";
                 }
                 else{
-                    $utype=checkuser('../Invoices/Teacher.txt' && $_POST['ID'] != "");
+                    $utype=checkuser('../Invoices/Teacher.txt');
                     $uval="t";
                 }
             }
             elseif($intype=="Accountant"){
-                if(checkuser('../Invoices/Accountant.txt') == 1 && $_POST['ID'] != ""){
+                if(checkuser('../Invoices/Accountant.txt') == 3 && $_POST['ID'] != ""){
                     $IDerr="Paramaters Invalid";
                 }
                 else{

@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include "TopNav.html";
 	require_once "User.php";
 	require "UserInfo.php";
 	require "Courses.php";
@@ -37,25 +38,21 @@
         {
         return $this->address;
         }
-    function __destruct()
-    {
-        
-    }
-
+		function __destruct(){
+		}
 	    public function ShowProfile()
 	    {
 	        echo $this->getID();
-	        echo"<hr>";
-	        echo $this->getfName();
-	        echo"<hr>";
-	        echo $this->getlName();
-	        echo"<hr>";
-	        echo $this->getph();
-	        echo"<hr>";
-	        echo $this->getadd();
-	        echo"<hr>";
-	        echo $this->getem();
-	        echo"<hr>";
+            echo "<hr>";
+            echo $this->getfName();
+            echo "<hr>";
+            echo $this->getlName();
+            echo "<hr>";
+            echo $this->getem();
+            echo "<hr>";
+            echo $this->getph();
+            echo "<hr>";
+            echo $this->getadd();
 	    }
 	}
 	function readCID($CID){
@@ -76,13 +73,13 @@
 	$filename= '../Invoices/Teacher.txt';
 	$file=fopen($filename, 'a+') or die('File Inaccesible');
 	$seperator="|";
-	while(!feof ($file))
+	while(!feof($file))
 	{
 	    $line=fgets($file);
 	    $Arrline=explode($seperator, $line);
 	    if($Arrline[0]==$id_value)
 	    {
-	        $tch=new Teacher ($Arrline[0],$Arrline[1],$Arrline[2],$Arrline[3],$Arrline[4],$Arrline[5],$Arrline[6]);
+	        $tch=new Teacher($Arrline[0],$Arrline[1],$Arrline[2],$Arrline[3],$Arrline[4],$Arrline[5],$Arrline[6]);
 	    }
     }
     fclose($file);

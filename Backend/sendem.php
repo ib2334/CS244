@@ -33,36 +33,30 @@
     } catch (Exception $e) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }
+    /*
+    $Emailcheck=$_SESSION['email'];
+    $file="../Invoices/Student.txt";
+    $ct=-1;
+    $linearr=[];
+    $filetype=fopen($file,'a+') or die ('File Inaccesible');
+    $seperator="|";
+    while(!feof($filetype)){
+        $line=fgets($filetype);
+        $Arrline=explode($seperator,$line);
+        ++$ct;
+        if($Arrline[3]==$Emailcheck && $Arrline[7]!=""){
+            echo "<br>";
+            $pass=$Arrline[4];
+            $liner=str_replace($pass,"yes",$line);
+            $crl = file( $file, FILE_IGNORE_NEW_LINES );
+            $crl[$ct] = $liner;
+            file_put_contents($file, implode("\n", $crl));
+            fclose($filetype);
+            break;
+            
+       }
+    }
+    fclose($filetype);*/
     session_reset();
 ?>
-<?php
-    function ChangeEmail($file,&$val,$Emailcheck){
-        $filetype=fopen($file,'a+') or die ('File Inaccesible');
-        $seperator="|";
-        while(!feof($filetype)){
-            $line=fgets($filetype);
-            $Arrline=explode($seperator,$line);
-            if($Arrline[3]==$Emailcheck){
-                $Arrline[4]=fwrite($filetype,"yes",);
-                fclose($filetype);
-                $val=true;
-                return $val;
-            }
-        }
-        fclose($filetype);
-    }
-    $Emailcheck=$_SESSION['email'];
-    $val=false;
-    if($val==false){
-        ChangeEmail('../Invoices/Admin.txt',$val,$Emailcheck);
-    }
-    if($val==false){
-        ChangeEmail('../Invoices/Student.txt',$val,$Emailcheck);
-    }
-    if($val==false){
-        ChangeEmail('../Invoices/Accountant.txt',$val,$Emailcheck);
-    }
-    if($val==false){
-        ChangeEmail('../Invoices/Teacher.txt',$val,$Emailcheck);
-    }
-?>
+
